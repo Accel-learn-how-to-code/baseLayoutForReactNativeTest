@@ -6,7 +6,9 @@ export default class Header extends Component {
   render() {
     return (
       <View style={styles.header}>
-        <TouchableOpacity style={styles.iconHolder}>
+        <TouchableOpacity
+          style={styles.iconHolder}
+          onPress={this.props.controlModal}>
           <Icon name="ellipsis-vertical" size={28} color="#fff" />
         </TouchableOpacity>
       </View>

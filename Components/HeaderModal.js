@@ -5,68 +5,48 @@ import {
   Text,
   Modal,
   TouchableOpacity,
-  Alert,
+  Dimensions,
 } from 'react-native';
+const deviceWidth = Dimensions.get('window').width;
 
 //Components
 
-export default class SelectModal extends Component {
+export default class HeaderModal extends Component {
   constructor() {
     super();
     this.state = {
       modalVisible: false,
-      id: '',
     };
   }
-  controlModal = (id) => {
+  controlModal = () => {
     this.setState({
       modalVisible: !this.state.modalVisible,
-      id: id,
     });
   };
 
-  deleteItem = (id) => {
+  addModal = () => {
     this.controlModal();
-    Alert.alert(
-      'Xóa 1 item',
-      'Bạn có muốn xóa không ?',
-      [
-        {text: 'Cancel', style: 'cancel'},
-        {
-          text: 'Xóa',
-          onPress: () => console.log('Delete item ' + id),
-        },
-      ],
-      {cancelable: false},
-    );
-  };
-
-  editModal = (id) => {
-    this.controlModal();
-    console.log('Edit item ' + id);
-    this.props.editModal();
+    this.props.addModal();
   };
 
   render() {
-    console.log('Item ' + this.state.id);
-    const {id} = this.state;
     return (
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={this.state.modalVisible}>
         <View style={styles.centeredModal}>
           <View style={styles.modalView}>
             <TouchableOpacity
               style={styles.openButton}
-              onPress={() => this.editModal(id)}>
-              <Text style={styles.textStyle}> Chỉnh sửa </Text>
+              onPress={() => this.addModal()}>
+              <Text style={styles.textStyle}> Thêm </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.openButton}
-              onPress={() => this.deleteItem(id)}>
-              <Text style={styles.textStyle}> Xóa </Text>
+              onPress={() => this.controlModal()}>
+              <Text style={styles.textStyle}> Xóa Hết </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -84,12 +64,13 @@ export default class SelectModal extends Component {
 const styles = StyleSheet.create({
   centeredModal: {
     flex: 1,
-    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
   },
   modalView: {
+    marginTop: 40,
+    width: deviceWidth * 0.4,
     backgroundColor: 'white',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    padding: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -101,7 +82,7 @@ const styles = StyleSheet.create({
   },
   openButton: {
     backgroundColor: '#F194FF',
-    borderRadius: 20,
+    borderRadius: 10,
     padding: 10,
     elevation: 2,
     marginVertical: 5,

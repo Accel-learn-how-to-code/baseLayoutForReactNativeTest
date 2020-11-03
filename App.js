@@ -15,10 +15,12 @@ import Icon from 'react-native-vector-icons/dist/Ionicons';
 //Data
 import items from './Data/data';
 //Components
+import Header from './Components/Header';
 import ListItem from './Components/ListItem';
 import SelectModal from './Components/SelectModal';
 import AddModal from './Components/AddModal';
 import EditModal from './Components/EditModal';
+import HeaderModal from './Components/HeaderModal';
 
 export default class App extends Component {
   constructor() {
@@ -31,20 +33,14 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <View style={styles.header}>
-          <TouchableOpacity
-            style={styles.iconHolder}
-            onPress={() => this.addModal.controlModal()}>
-            <Icon name="ellipsis-vertical" size={28} color="#fff" />
-          </TouchableOpacity>
-        </View>
+        <Header controlModal={() => this.headerModal.controlModal()} />
         <SafeAreaView style={styles.container}>
           <FlatList
             data={items}
             renderItem={({item, index}) => {
               return (
                 <ListItem
-                  controlModal={() => this.selectModal.controlModal()}
+                  controlModal={() => this.selectModal.controlModal(item.id)}
                   item={item}
                   index={index}
                 />
@@ -53,11 +49,14 @@ export default class App extends Component {
             keyExtractor={(item) => item.id}
           />
 
+          <HeaderModal
+            ref={(value) => (this.headerModal = value)}
+            addModal={() => this.addModal.controlModal()}
+          />
           <SelectModal
             ref={(value) => (this.selectModal = value)}
             editModal={() => this.editModal.controlModal()}
           />
-
           <AddModal ref={(value) => (this.addModal = value)} />
           <EditModal ref={(value) => (this.editModal = value)} />
         </SafeAreaView>
