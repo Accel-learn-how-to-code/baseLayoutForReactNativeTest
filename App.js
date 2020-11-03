@@ -17,6 +17,8 @@ import items from './Data/data';
 //Components
 import ListItem from './Components/ListItem';
 import SelectModal from './Components/SelectModal';
+import AddModal from './Components/AddModal';
+import EditModal from './Components/EditModal';
 
 export default class App extends Component {
   constructor() {
@@ -30,7 +32,9 @@ export default class App extends Component {
     return (
       <>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.iconHolder}>
+          <TouchableOpacity
+            style={styles.iconHolder}
+            onPress={() => this.addModal.controlModal()}>
             <Icon name="ellipsis-vertical" size={28} color="#fff" />
           </TouchableOpacity>
         </View>
@@ -49,7 +53,13 @@ export default class App extends Component {
             keyExtractor={(item) => item.id}
           />
 
-          <SelectModal ref={(value) => (this.selectModal = value)} />
+          <SelectModal
+            ref={(value) => (this.selectModal = value)}
+            editModal={() => this.editModal.controlModal()}
+          />
+
+          <AddModal ref={(value) => (this.addModal = value)} />
+          <EditModal ref={(value) => (this.editModal = value)} />
         </SafeAreaView>
       </>
     );
@@ -72,5 +82,5 @@ const styles = StyleSheet.create({
   },
   iconHolder: {
     marginRight: 5,
-  }
+  },
 });

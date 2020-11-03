@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, Modal, TouchableOpacity} from 'react-native';
 
 //Components
 
-export default class App extends Component {
+export default class SelectModal extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,6 +15,12 @@ export default class App extends Component {
       modalVisible: !this.state.modalVisible,
     });
   };
+
+  editModal = () => {
+    this.controlModal();
+    this.props.editModal();
+  };
+
   render() {
     return (
       <Modal
@@ -25,7 +31,7 @@ export default class App extends Component {
           <View style={styles.modalView}>
             <TouchableOpacity
               style={styles.openButton}
-              onPress={() => this.controlModal()}>
+              onPress={() => this.editModal()}>
               <Text style={styles.textStyle}> Chỉnh sửa </Text>
             </TouchableOpacity>
 
