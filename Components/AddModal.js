@@ -71,12 +71,14 @@ export default class AddModal extends Component {
               onChangeText={(text) => this.setState({title: text})}
               value={this.state.title}
             />
+
             <TextInput
               style={styles.input}
               placeholder="Description"
               onChangeText={(text) => this.setState({description: text})}
               value={this.state.description}
             />
+
             <TextInput
               style={styles.input}
               placeholder="Price"

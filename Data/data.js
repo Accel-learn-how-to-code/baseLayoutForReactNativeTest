@@ -1,6 +1,6 @@
 const items = [
   {
-    id: '1',
+    id: '434321',
     title: 'Laptop MSI',
     description: 'Day la Laptop MSI',
     price: 243,
@@ -8,7 +8,7 @@ const items = [
       'https://phucanhcdn.com/media/product/38767_msi_gaming_gf65_thin_10ser_ha3.jpg',
   },
   {
-    id: '2',
+    id: '2234234',
     title: 'Laptop MSI 2',
     description: 'Day la Laptop MSI 2',
     price: 453,
@@ -16,7 +16,7 @@ const items = [
       'https://hanoicomputercdn.com/media/product/49721_laptop_msi_modern_14_a10rb_686vn_i7_xam.jpg',
   },
   {
-    id: '3',
+    id: '523523',
     title: 'Laptop MSI 3',
     description: 'Day la Laptop MSI 3',
     price: 685,
@@ -24,7 +24,7 @@ const items = [
       'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/07/chon-mua-laptop-msi-thumb.jpg',
   },
   {
-    id: '4',
+    id: '4123123',
     title: 'Laptop MSI 4',
     description: 'Day la Laptop MSI 4',
     price: 214,
@@ -32,7 +32,7 @@ const items = [
       'https://phucanhcdn.com/media/product/38767_msi_gaming_gf65_thin_10ser_ha3.jpg',
   },
   {
-    id: '5',
+    id: '54345345',
     title: 'Laptop MSI 5',
     description: 'Day la Laptop MSI 5',
     price: 339,
@@ -40,7 +40,7 @@ const items = [
       'https://hanoicomputercdn.com/media/product/49721_laptop_msi_modern_14_a10rb_686vn_i7_xam.jpg',
   },
   {
-    id: '6',
+    id: '2343246',
     title: 'Laptop MSI 6',
     description: 'Day la Laptop MSI 6',
     price: 894,
@@ -48,7 +48,7 @@ const items = [
       'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/07/chon-mua-laptop-msi-thumb.jpg',
   },
   {
-    id: '7',
+    id: '23543257',
     title: 'Laptop MSI 7',
     description: 'Day la Laptop MSI 8',
     price: 453,
@@ -56,7 +56,7 @@ const items = [
       'https://hanoicomputercdn.com/media/product/49721_laptop_msi_modern_14_a10rb_686vn_i7_xam.jpg',
   },
   {
-    id: '9',
+    id: '9623236',
     title: 'Laptop MSI 9',
     description: 'Day la Laptop MSI 9',
     price: 568,

@@ -10,18 +10,50 @@ import {
 } from 'react-native';
 const deviceWidth = Dimensions.get('window').width;
 
+//Data
+import items from '../Data/data';
+
 export default class EditModal extends Component {
   constructor() {
     super();
     this.state = {
       modalVisible: false,
+      id: '',
+      title: '',
+      description: '',
+      price: '',
     };
   }
 
-  controlModal = () => {
+  controlModal = (id) => {
+    //console.log('Edit modal is open ' + id);
+    this.setState({
+      modalVisible: !this.state.modalVisible,
+      id: id,
+    });
+
+    const index = items.findIndex((item) => item.id === id);
+    this.setState({
+      title: items[index].title,
+      description: items[index].description,
+      price: JSON.stringify(items[index].price),
+    });
+  };
+
+  editItem = () => {
+    const {title, description, price, id} = this.state;
+    const index = items.findIndex((item) => item.id === id);
+
+    items[index].title = title;
+    items[index].description = description;
+    items[index].price = Number(price);
+
+    //console.log(JSON.stringify(items[index]));
+
     this.setState({
       modalVisible: !this.state.modalVisible,
     });
+    this.props.refreshScreen();
   };
 
   render() {
@@ -34,21 +66,29 @@ export default class EditModal extends Component {
           <View style={styles.modalView}>
             <TextInput
               style={styles.input}
-              placeholder="Type here"
-              //onChangeText={(text) => setText(text)}
-              //defaultValue="lalala"
+              placeholder="Title"
+              onChangeText={(text) => this.setState({title: text})}
+              value={this.state.title}
             />
+
             <TextInput
               style={styles.input}
-              placeholder="Type here too!"
-              //onChangeText={(text) => setText(text)}
-              //defaultValue="lalala 2"
+              placeholder="Description"
+              onChangeText={(text) => this.setState({description: text})}
+              value={this.state.description}
+            />
+
+            <TextInput
+              style={styles.input}
+              placeholder="Price"
+              onChangeText={(text) => this.setState({price: text})}
+              value={this.state.price}
             />
 
             <View style={styles.buttonHolder}>
               <TouchableOpacity
                 style={styles.openButton}
-                onPress={() => this.controlModal()}>
+                onPress={() => this.editItem()}>
                 <Text style={styles.textStyle}> Sửa </Text>
               </TouchableOpacity>
 

@@ -8,7 +8,8 @@ import {
   Alert,
 } from 'react-native';
 
-//Components
+//Data
+import items from '../Data/data';
 
 export default class SelectModal extends Component {
   constructor() {
@@ -34,7 +35,11 @@ export default class SelectModal extends Component {
         {text: 'Cancel', style: 'cancel'},
         {
           text: 'Xóa',
-          onPress: () => console.log('Delete item ' + id),
+          onPress: () => {
+            const index = items.findIndex((item) => item.id === id);
+            items.splice(index, 1);
+            this.props.refreshScreen();
+          },
         },
       ],
       {cancelable: false},
@@ -44,7 +49,7 @@ export default class SelectModal extends Component {
   editModal = (id) => {
     this.controlModal();
     console.log('Edit item ' + id);
-    this.props.editModal();
+    this.props.editModal(id);
   };
 
   render() {

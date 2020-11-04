@@ -46,12 +46,11 @@ export default class App extends Component {
           <FlatList
             ref={(value) => (this.flatList = value)}
             data={items}
-            renderItem={({item, index}) => {
+            renderItem={({item}) => {
               return (
                 <ListItem
                   controlModal={() => this.selectModal.controlModal(item.id)}
                   item={item}
-                  index={index}
                 />
               );
             }}
@@ -65,13 +64,17 @@ export default class App extends Component {
           />
           <SelectModal
             ref={(value) => (this.selectModal = value)}
-            editModal={() => this.editModal.controlModal()}
+            editModal={(id) => this.editModal.controlModal(id)}
+            refreshScreen={this.refreshScreen}
           />
           <AddModal
             ref={(value) => (this.addModal = value)}
             refreshScreen={this.refreshScreen}
           />
-          <EditModal ref={(value) => (this.editModal = value)} />
+          <EditModal
+            ref={(value) => (this.editModal = value)}
+            refreshScreen={this.refreshScreen}
+          />
         </SafeAreaView>
       </>
     );
