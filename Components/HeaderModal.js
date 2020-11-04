@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 const deviceWidth = Dimensions.get('window').width;
 
-//Components
+//Data
+import items from '../Data/data';
 
 export default class HeaderModal extends Component {
   constructor() {
@@ -40,7 +41,8 @@ export default class HeaderModal extends Component {
         {
           text: 'Ok',
           onPress: () => {
-            console.log('delete all item');
+            items.splice(0, items.length);
+            this.props.refreshScreen();
           },
         },
       ],

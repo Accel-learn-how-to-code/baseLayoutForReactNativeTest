@@ -61,6 +61,7 @@ export default class App extends Component {
           <HeaderModal
             ref={(value) => (this.headerModal = value)}
             addModal={() => this.addModal.controlModal()}
+            refreshScreen={this.refreshScreen}
           />
           <SelectModal
             ref={(value) => (this.selectModal = value)}
