@@ -48,7 +48,6 @@ export default class SelectModal extends Component {
   };
 
   render() {
-    console.log('Item ' + this.state.id);
     const {id} = this.state;
     return (
       <Modal

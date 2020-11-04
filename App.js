@@ -27,8 +27,16 @@ export default class App extends Component {
     super();
     this.state = {
       modalVisible: false,
+      refreshScreen: 0,
     };
   }
+
+  refreshScreen = () => {
+    this.setState({
+      refreshScreen: ++this.state.refreshScreen,
+    });
+    this.flatList.scrollToEnd();
+  };
 
   render() {
     return (
@@ -36,6 +44,7 @@ export default class App extends Component {
         <Header controlModal={() => this.headerModal.controlModal()} />
         <SafeAreaView style={styles.container}>
           <FlatList
+            ref={(value) => (this.flatList = value)}
             data={items}
             renderItem={({item, index}) => {
               return (
@@ -57,7 +66,10 @@ export default class App extends Component {
             ref={(value) => (this.selectModal = value)}
             editModal={() => this.editModal.controlModal()}
           />
-          <AddModal ref={(value) => (this.addModal = value)} />
+          <AddModal
+            ref={(value) => (this.addModal = value)}
+            refreshScreen={this.refreshScreen}
+          />
           <EditModal ref={(value) => (this.editModal = value)} />
         </SafeAreaView>
       </>

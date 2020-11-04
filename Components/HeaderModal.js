@@ -6,6 +6,7 @@ import {
   Modal,
   TouchableOpacity,
   Dimensions,
+  Alert,
 } from 'react-native';
 const deviceWidth = Dimensions.get('window').width;
 
@@ -29,6 +30,26 @@ export default class HeaderModal extends Component {
     this.props.addModal();
   };
 
+  deleteAll = () => {
+    this.controlModal();
+    Alert.alert(
+      'Xóa toàn bộ item',
+      'Bạn có muốn xóa hết?',
+      [
+        {text: 'Cancel', style: 'cancel'},
+        {
+          text: 'Ok',
+          onPress: () => {
+            console.log('delete all item');
+          },
+        },
+      ],
+      {
+        cancelable: false,
+      },
+    );
+  };
+
   render() {
     return (
       <Modal
@@ -45,7 +66,7 @@ export default class HeaderModal extends Component {
 
             <TouchableOpacity
               style={styles.openButton}
-              onPress={() => this.controlModal()}>
+              onPress={() => this.deleteAll()}>
               <Text style={styles.textStyle}> Xóa Hết </Text>
             </TouchableOpacity>
 

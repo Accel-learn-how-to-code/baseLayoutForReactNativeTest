@@ -5,12 +5,13 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
+  Image,
 } from 'react-native';
 
 function Item({item, controlModal}) {
   return (
     <TouchableOpacity style={styles.itemHolder} onPress={controlModal}>
-      <View style={styles.imageHolder}></View>
+      <Image source={{uri: item.image}} style={styles.imageHolder}></Image>
       <View style={styles.information}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}>{item.description}</Text>
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
     height: 70,
     width: 70,
     backgroundColor: '#ddd',
+    resizeMode: 'cover',
   },
   information: {
     flex: 1,
