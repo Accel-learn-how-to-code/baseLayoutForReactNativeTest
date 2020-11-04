@@ -48,8 +48,6 @@ export default class EditModal extends Component {
     items[index].description = description;
     items[index].price = Number(price);
 
-    //console.log(JSON.stringify(items[index]));
-
     this.setState({
       modalVisible: !this.state.modalVisible,
     });
